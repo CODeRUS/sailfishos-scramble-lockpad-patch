@@ -1,0 +1,8 @@
+{
+    "name": "Scramble keypad buttons on devicelock",
+    "description": "Scramble keypad buttons on devicelock",
+    "category": "homescreen",
+    "infos": {
+        "maintainer": "coderus"
+    }
+}
