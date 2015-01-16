@@ -21,12 +21,12 @@ index 4dd6633..1b5cf63 100644
      property alias pressedButtonColor: pressedButtonBackground.color
  
 -    property string _numbers: "0123456789"
-+    property bool randomize: !dialer.parent.hasOwnProperty("simManager") && !dialer.parent.emergency
-+    property bool enteringNewPin: dialer.parent.enteringNewPin
-+    property string newPin: dialer.parent._newPin
-+    property var numbersArray: []
++    property bool randomize: !dialer.parent.hasOwnProperty("simManager") && !dialer.hasOwnProperty("dtmfPlaying") && !dialer.parent.emergency
++    property string newPin: dialer.parent.hasOwnProperty("_newPin") ? dialer.parent._newPin : ""
++    property var initialArray: ["0","1","2","3","4","5","6","7","8","9"]
++    property var numbersArray: initialArray
 +    function shuffle() {
-+        var numbers = ["0","1","2","3","4","5","6","7","8","9"]
++        var numbers = initialArray
 +        if (randomize) {
 +            var counter = numbers.length, temp, index;
 +            while (counter > 0) {
