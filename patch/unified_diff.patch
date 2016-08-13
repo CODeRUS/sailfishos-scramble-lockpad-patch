@@ -1,11 +1,5 @@
-commit 2c824829a6e606930f41664011678a1138ecb55a
-Author: CODeRUS <coderusinbox@gmail.com>
-Date:   Thu Dec 18 20:03:52 2014 +0500
-
-    RandomKeypad PoC v1
-
-diff --git a/usr/lib/qt5/qml/Sailfish/Silica/Keypad.qml b/usr/lib/qt5/qml/Sailfish/Silica/Keypad.qml
-index 4dd6633..1b5cf63 100644
+diff --git a/Keypad.qml b/Keypad.qml
+index a890b48..9bfeebc 100644
 --- a/usr/lib/qt5/qml/Sailfish/Silica/Keypad.qml
 +++ b/usr/lib/qt5/qml/Sailfish/Silica/Keypad.qml
 @@ -40,14 +40,42 @@ Column {
@@ -51,9 +45,9 @@ index 4dd6633..1b5cf63 100644
 +    }
 +    property string _numbers: numbersArray.join("")
      property QtObject _feedbackEffect
- 
-     signal pressed(string number)
-@@ -128,7 +156,7 @@ Column {
+     property int _buttonWidth: (3*Theme.itemSizeHuge - 4*Theme.paddingLarge) / 3
+     property int _buttonHeight: screen.sizeCategory > Screen.Medium ? Theme.itemSizeExtraLarge : Theme.itemSizeLarge
+@@ -130,7 +158,7 @@ Column {
          KeypadButton {
              key: Qt.Key_1
              text: _numbers.charAt(1)
@@ -62,7 +56,7 @@ index 4dd6633..1b5cf63 100644
              onPressAndHold: dialer.voiceMailCalled()
              Image {
                  id: voiceMailIcon
-@@ -141,12 +169,12 @@ Column {
+@@ -143,12 +171,12 @@ Column {
          KeypadButton {
              key: Qt.Key_2
              text: _numbers.charAt(2)
@@ -77,7 +71,7 @@ index 4dd6633..1b5cf63 100644
          }
      }
      Row {
-@@ -155,7 +183,7 @@ Column {
+@@ -160,7 +188,7 @@ Column {
              KeypadButton {
                  key: Qt.Key_4 + index
                  text: _numbers.charAt(4 + index)
@@ -86,7 +80,7 @@ index 4dd6633..1b5cf63 100644
              }
          }
      }
-@@ -165,7 +193,7 @@ Column {
+@@ -173,7 +201,7 @@ Column {
              KeypadButton {
                  key: Qt.Key_7 + index
                  text: _numbers.charAt(7 + index)
@@ -95,7 +89,7 @@ index 4dd6633..1b5cf63 100644
              }
          }
      }
-@@ -179,13 +207,13 @@ Column {
+@@ -190,13 +218,13 @@ Column {
                  visible: symbolsVisible
                  key: Qt.Key_Asterisk
                  text: "*"
@@ -109,10 +103,10 @@ index 4dd6633..1b5cf63 100644
 -            secondaryText: vanityDialNumbers[10]
 +            text: _numbers.charAt(0)
 +            secondaryText: vanityDialNumbers[parseInt(text)]
-         }        
+         }
          Item {
              width: hashButton.width
-@@ -196,7 +224,7 @@ Column {
+@@ -207,7 +235,7 @@ Column {
                  visible: symbolsVisible
                  text: "#"
                  key: Qt.Key_NumberSign
